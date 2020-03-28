@@ -1,0 +1,20 @@
+FROM centos:centos7.7.1908
+
+MAINTAINER A11en.huang@foxmail.com
+
+ADD jre8.tar.gz /usr/java/jdk/
+
+RUN mkdir -p /opt/logs \
+    && yum -y install kde-l10n-Chinese \
+    && yum -y reinstall glibc-common \
+    && yum -y install less \
+    && localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 \
+    && ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'Asia/Shanghai' > /etc/timezone
+
+ENV JAVA_HOME   /usr/java/jdk
+ENV PATH        ${PATH}:${JAVA_HOME}/bin
+ENV LC_ALL      zh_CN.utf8
+ENV LANG        C.UTF-8
+
+WORKDIR /opt/logs
