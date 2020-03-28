@@ -1,6 +1,6 @@
 FROM centos:centos7.7.1908
 
-MAINTAINER A11en.huang@foxmail.com
+LABEL maintainer="Oracle JRE8 Docker Maintainers <a11en.huang@foxmail.com>"
 
 ADD jre8.tar.gz /usr/java/jdk/
 
